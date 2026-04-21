@@ -1,0 +1,53 @@
+---
+title: "Production Invoicing System: Technical Implementation"
+summary: "Technical deep dive into building a complex financial application with React, NestJS, and PostgreSQL."
+publishedAt: "2025-04-16"
+tag: "Case Study"
+category: "Project Case Studies"
+image: "/images/gallery/vertical-3.jpg"
+---
+
+## Building a Financial Application
+
+Building a production-grade invoicing system requires precision, security, and scalability. This case study covers the technical decisions and challenges faced while developing this platform.
+
+### Architecture Overview
+
+- Frontend: React + TypeScript with Mantine UI
+- Backend: NestJS with Prisma ORM
+- Database: PostgreSQL with optimized queries
+- Storage: AWS S3 for document storage
+
+### Key Challenges
+
+#### Complex Financial Logic
+
+- Handling tax calculations, discounts, and multi-currency support
+- Separated calculation logic into services with comprehensive unit tests
+- Implemented validation at both frontend and backend
+
+#### PDF Generation at Scale
+
+- Generating 10,000+ invoices monthly
+- Implemented queue-based PDF generation with background workers
+- Used Bull queue for job management
+
+#### Real-Time Updates
+
+- Multiple team members editing invoices simultaneously
+- Implemented WebSocket-based real-time sync with conflict resolution
+- Added optimistic updates for better UX
+
+### Performance Results
+
+- Invoice generation: 3 seconds average
+- PDF export: Sub-2 second response time
+- Database queries optimized to under 50ms
+
+### Lessons Learned
+
+- Separate business logic from presentation layer
+- Implement comprehensive error handling for financial transactions
+- Always use transactions for ACID compliance
+- Monitor and log all financial operations
+- Implement regular backup and disaster recovery testing
