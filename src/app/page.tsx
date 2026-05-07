@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { home, about, person, baseURL } from "@/resources";
+import { home, about, person, baseURL } from "@/config";
 import { HomeHero } from "@/components/home/HomeHero";
 import { TechSkills } from "@/components/home/TechSkills";
 import { FeaturedProjects } from "@/components/home/FeaturedProjects";
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center gap-16">
+    <div className="flex flex-col items-center gap-8">
       {/* Hero Section */}
       <HomeHero />
 

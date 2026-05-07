@@ -1,4 +1,4 @@
-import { getPosts } from "@/utils/utils";
+import { getPosts } from "@/lib/mdx";
 import { FeaturedProjectsClient } from "@/components/home/FeaturedProjectsClient";
 
 export function FeaturedProjects() {

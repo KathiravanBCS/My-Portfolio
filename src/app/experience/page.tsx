@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { person, baseURL } from "@/resources";
-import ExperienceTimeline from "@/components/ExperienceTimeline";
+import { person, baseURL } from "@/config";
+import ExperienceTimeline from "@/components/experience/ExperienceTimeline";
 
 export const metadata: Metadata = {
   title: `Experience – ${person.name}`,

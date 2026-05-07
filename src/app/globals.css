@@ -3,17 +3,208 @@
 @tailwind utilities;
 
 @layer base {
-  /* Hide default cursor - custom cursor handles it */
-  *, *::before, *::after {
+  :root {
+    --global-font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    font-family: var(--global-font-family);
+  }
+
+  body:not([data-modal-open]) *, body:not([data-modal-open]) *::before, body:not([data-modal-open]) *::after {
     cursor: none !important;
+  }
+
+  body[data-modal-open], body[data-modal-open] * {
+    cursor: default !important;
   }
 
   body {
     @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100;
+    font-family: var(--global-font-family);
+  }
+
+  /* Global modern thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(236, 72, 153, 0.35);
+    border-radius: 999px;
+    transition: background 0.2s;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(236, 72, 153, 0.7);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(236, 72, 153, 0.35) transparent;
   }
 }
 
 @layer components {
+  /* ── Blog article prose ── */
+  .blog-content {
+    font-size: var(--blog-text-size, 18px);
+  }
+
+  .blog-content p {
+    font-size: var(--blog-text-size, 18px);
+    line-height: 1.8;
+    margin: 1.25em 0;
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  .blog-content h2 {
+    font-size: calc(var(--blog-text-size, 18px) * 1.5);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 2.5em;
+    margin-bottom: 0.75em;
+    scroll-margin-top: 5rem;
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .blog-content h3 {
+    font-size: calc(var(--blog-text-size, 18px) * 1.2);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 2em;
+    margin-bottom: 0.6em;
+    scroll-margin-top: 5rem;
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .blog-content h4 {
+    font-size: calc(var(--blog-text-size, 18px) * 1.05);
+    font-weight: 600;
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+    scroll-margin-top: 5rem;
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .blog-content strong {
+    font-weight: 600;
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    margin: 1.25em 0;
+    padding-left: 1.6em;
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  .blog-content ul {
+    list-style-type: disc;
+  }
+
+  .blog-content ol {
+    list-style-type: decimal;
+  }
+
+  .blog-content li {
+    font-size: var(--blog-text-size, 18px);
+    line-height: 1.75;
+    margin: 0.4em 0;
+  }
+
+  .blog-content blockquote {
+    border-left: 3px solid #ff4081;
+    padding-left: 1.25em;
+    margin: 1.75em 0;
+    font-style: italic;
+    @apply text-gray-500 dark:text-gray-400;
+  }
+
+  .blog-content code {
+    font-size: 0.875em;
+    padding: 0.2em 0.4em;
+    border-radius: 0.3em;
+    font-family: ui-monospace, "JetBrains Mono", monospace;
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200;
+  }
+
+  .blog-content pre {
+    margin: 1.75em 0;
+    padding: 1.25em 1.5em;
+    border-radius: 0.75em;
+    overflow-x: auto;
+    font-size: 0.875em;
+    line-height: 1.7;
+    @apply bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800;
+  }
+
+  .blog-content pre code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+    @apply text-gray-800 dark:text-gray-200;
+  }
+
+  .blog-content hr {
+    margin: 2.5em 0;
+    @apply border-gray-200 dark:border-gray-800;
+  }
+
+  .blog-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.75em 0;
+    font-size: 0.9em;
+  }
+
+  .blog-content th {
+    font-weight: 600;
+    text-align: left;
+    padding: 0.6em 1em;
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-800;
+  }
+
+  .blog-content td {
+    padding: 0.6em 1em;
+    @apply text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-800;
+  }
+
+  .blog-content tr:nth-child(even) td {
+    @apply bg-gray-50/50 dark:bg-gray-900/30;
+  }
+
+  .blog-content a {
+    @apply text-[#ff4081] underline underline-offset-2 decoration-[#ff4081]/40 hover:decoration-[#ff4081];
+    transition: text-decoration-color 0.15s;
+  }
+
+  /* TOC custom scrollbar */
+  .toc-scrollbar::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .toc-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .toc-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(236, 72, 153, 0.3);
+    border-radius: 999px;
+  }
+
+  .toc-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(236, 72, 153, 0.6);
+  }
+
+  /* ── end blog prose ── */
+
   .btn-primary {
     @apply inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors text-sm;
   }

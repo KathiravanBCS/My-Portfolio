@@ -1,6 +1,6 @@
 "use client";
 
-import { socialSharing } from "@/resources";
+import { socialSharing } from "@/config";
 
 interface ShareSectionProps {
   title: string;

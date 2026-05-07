@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { blog, person, baseURL } from "@/resources";
+import { blog, person, baseURL } from "@/config";
 import { PostsByCategory } from "@/components/blog/PostsByCategory";
 import { BlogHeader } from "@/components/blog/BlogHeader";
-import { getPosts } from "@/utils/utils";
+import { getPosts } from "@/lib/mdx";
 
 export const metadata: Metadata = {
   title: blog.title,

@@ -1,0 +1,391 @@
+---
+title: "How to Manage Blog Articles: Complete Guide to Create and Remove Posts"
+publishedAt: "2026-05-06"
+summary: "Learn how to create new blog articles and remove existing ones from your portfolio. Complete step-by-step guide for managing your blog content manually."
+image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=630&fit=crop"
+tag: "Tutorial"
+category: "Learning"
+---
+
+## Introduction
+
+Managing your blog articles is simple and straightforward. This guide covers everything you need to know about creating new articles and removing old ones from your portfolio application.
+
+## Part 1: Creating New Blog Articles
+
+### Step 1: Locate the Blog Posts Directory
+
+Navigate to your project structure:
+
+```
+your-project/
+└── src/
+    └── app/
+        └── blog/
+            └── posts/  ← Go here
+```
+
+### Step 2: Create a New MDX File
+
+Create a new file with the naming format: `your-article-title.mdx`
+
+**Naming conventions:**
+- Use lowercase letters
+- Use hyphens to separate words
+- Be descriptive but concise
+
+**Examples:**
+- ✅ `how-to-learn-react.mdx`
+- ✅ `typescript-advanced-techniques.mdx`
+- ✅ `database-optimization-guide.mdx`
+- ❌ `MyArticle.mdx` (avoid uppercase)
+- ❌ `article_name.mdx` (avoid underscores)
+
+### Step 3: Add Article Metadata
+
+At the very top of your MDX file, add the frontmatter (metadata) enclosed in three dashes:
+
+```mdx
+---
+title: "Your Article Title Here"
+publishedAt: "2026-05-06"
+summary: "Brief description of your article - this shows in blog listings"
+image: "https://images.unsplash.com/photo-xxx"
+tag: "Category or Tag"
+category: "Learning"
+---
+```
+
+### Step 4: Understand Metadata Fields
+
+| Field | Description | Example | Required |
+|-------|-------------|---------|----------|
+| **title** | Your article's full title | "React Hooks in 2025" | ✅ Yes |
+| **publishedAt** | Publication date (YYYY-MM-DD format) | "2026-05-06" | ✅ Yes |
+| **summary** | Short description (50-100 words) for listings | "Master advanced React patterns..." | ✅ Yes |
+| **image** | Cover image URL | "https://images.unsplash.com/..." | ❌ Optional |
+| **tag** | Main topic/category | "Learning" or "Technical" | ✅ Yes |
+| **category** | Article category type | "Learning & Tutorials" | ✅ Yes |
+
+**Tag/Category Examples:**
+- Technical
+- Learning
+- Learning & Tutorials
+- Market Trends
+- Best Practices
+- Advanced Patterns
+
+### Step 5: Write Your Article Content
+
+Below the metadata (after the closing `---`), write your content using Markdown:
+
+```mdx
+---
+title: "Your Article Title"
+publishedAt: "2026-05-06"
+summary: "Your article summary"
+image: "https://images.unsplash.com/photo-xxx"
+tag: "Learning"
+category: "Learning & Tutorials"
+---
+
+## Main Section Heading
+
+This is your first paragraph. Write naturally and clearly.
+
+### Sub-section Heading
+
+#### Even Deeper Heading
+
+You can create nested headings. The table of contents will auto-generate from these.
+
+## Code Examples
+
+You can include code blocks:
+
+\`\`\`javascript
+function helloWorld() {
+  console.log("Hello, World!");
+}
+\`\`\`
+
+\`\`\`jsx
+export default function Component() {
+  return <div>React Component</div>;
+}
+\`\`\`
+
+\`\`\`sql
+SELECT * FROM users WHERE id = 123;
+\`\`\`
+
+## Lists
+
+### Ordered Lists
+
+1. First item
+2. Second item
+3. Third item
+
+### Unordered Lists
+
+- Item one
+- Item two
+- Item three
+
+## Emphasis and Links
+
+**Bold text** for emphasis
+
+*Italic text* for subtle emphasis
+
+[Link to external site](https://example.com)
+
+## Blockquotes
+
+> "This is an important quote or tip"
+> 
+> — Author Name
+
+## Tables
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Data 1   | Data 2   | Data 3   |
+| Data 4   | Data 5   | Data 6   |
+
+## Images in Content
+
+![Alt text](https://images.unsplash.com/photo-xxx)
+
+## Key Features of Your Blog
+
+- **Automatic Table of Contents**: Generated from your headings (## and ###)
+- **SEO Friendly**: Metadata is used for search engines
+- **Related Articles**: Automatically shows 3 related articles at the bottom
+- **Dark Mode Support**: Your article looks great in both light and dark themes
+- **Responsive Design**: Mobile, tablet, and desktop friendly
+```
+
+### Step 6: File Structure After Creating
+
+Your blog posts directory will look like:
+
+```
+src/app/blog/posts/
+├── how-databases-actually-work.mdx
+├── how-git-actually-works.mdx
+├── how-video-calling-works.mdx
+├── how-to-learn-react.mdx          ← New article
+└── typescript-advanced-techniques.mdx  ← New article
+```
+
+### Step 7: Article Automatically Publishes
+
+Once you save your new `.mdx` file:
+
+✅ Appears in blog listing at `/blog`  
+✅ Gets its own page at `/blog/your-article-title`  
+✅ Shows in related articles on other posts  
+✅ Table of contents auto-generates from headings  
+✅ SEO metadata is indexed  
+✅ Tags and categories are applied  
+
+**No additional code changes needed!**
+
+---
+
+## Part 2: Removing Blog Articles
+
+### Step 1: Locate the Article to Remove
+
+Go to: `src/app/blog/posts/`
+
+List of your current articles:
+
+```
+src/app/blog/posts/
+├── how-databases-actually-work.mdx
+├── how-git-actually-works.mdx
+├── how-video-calling-works.mdx
+├── react-hooks-guide.mdx
+└── typescript-guide.mdx
+```
+
+### Step 2: Delete the MDX File
+
+**Simply delete the `.mdx` file** of the article you want to remove.
+
+**Example - Removing these articles:**
+
+```
+src/app/blog/posts/
+├── how-databases-actually-work.mdx  ← DELETE THIS
+├── how-git-actually-works.mdx       ← DELETE THIS
+├── how-video-calling-works.mdx
+├── react-hooks-guide.mdx
+└── typescript-guide.mdx
+```
+
+**How to delete:**
+
+**On Windows (File Explorer):**
+1. Navigate to `src/app/blog/posts/`
+2. Right-click the file
+3. Select "Delete"
+
+**On Mac (Finder):**
+1. Navigate to `src/app/blog/posts/`
+2. Right-click the file
+3. Select "Move to Trash"
+
+**Using VS Code:**
+1. Open the file in VS Code
+2. Right-click the filename in sidebar
+3. Select "Delete"
+
+**Using Command Line (Git Bash/Terminal):**
+```bash
+rm src/app/blog/posts/your-article-name.mdx
+```
+
+### Step 3: Verify Removal
+
+Once deleted:
+
+✅ Article disappears from `/blog` listing  
+✅ Individual page becomes 404 Not Found  
+✅ Won't appear in related articles anymore  
+✅ No broken links in your application  
+
+### Step 4: Git Commit (Optional)
+
+If using Git version control:
+
+```bash
+# See deleted files
+git status
+
+# Stage the deletion
+git add -A
+
+# Commit the change
+git commit -m "Remove outdated blog articles"
+
+# Push to remote (if using GitHub/GitLab)
+git push origin main
+```
+
+---
+
+## Complete Example: Create + Delete Workflow
+
+### Creating a New Article
+
+**File:** `src/app/blog/posts/web-performance-optimization.mdx`
+
+```mdx
+---
+title: "Web Performance Optimization: Speed Up Your Site"
+publishedAt: "2026-05-10"
+summary: "Learn practical techniques to optimize your website performance. From image optimization to caching strategies, master everything needed to make your site lightning fast."
+image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97"
+tag: "Performance"
+category: "Technical"
+---
+
+## Why Performance Matters
+
+Website performance directly impacts user experience and SEO rankings.
+
+## Image Optimization
+
+Use modern formats and lazy loading...
+
+## Caching Strategies
+
+Implement browser caching and server-side caching...
+
+## Code Splitting
+
+Split your JavaScript bundles for faster loading...
+
+## Monitoring and Tools
+
+Use tools like Google PageSpeed Insights...
+```
+
+**Result:**
+- New article available at `/blog/web-performance-optimization`
+- Shows up in blog listing
+- Automatically linked in related articles
+
+### Deleting an Article
+
+**Delete:** `src/app/blog/posts/how-databases-actually-work.mdx`
+
+**Result:**
+- Article removed from `/blog` listing
+- Page `/blog/how-databases-actually-work` shows 404
+- No broken links in your site
+
+---
+
+## Best Practices
+
+### When Creating Articles
+
+1. **Write compelling summaries** - Users see these in listings
+2. **Use clear headings** - They auto-generate table of contents
+3. **Add relevant images** - Makes articles more engaging
+4. **Pick accurate tags** - Helps with SEO and organization
+5. **Proofread before saving** - Small changes require rebuilding
+6. **Use consistent formatting** - Makes content professional
+
+### When Removing Articles
+
+1. **Keep important articles** - Remove only truly outdated content
+2. **Check for backlinks** - Make sure other pages don't link to it
+3. **Update related articles** - If something references the deleted article
+4. **Commit with descriptive messages** - Document why you removed it
+
+---
+
+## Troubleshooting
+
+### Article Not Showing Up?
+
+1. Check file location: `src/app/blog/posts/your-file.mdx`
+2. Verify `.mdx` extension (not `.md`)
+3. Ensure metadata is formatted correctly (three dashes above and below)
+4. Rebuild/refresh your application
+
+### Article Shows Errors?
+
+1. Check markdown syntax
+2. Ensure code blocks have closing backticks (`)
+3. Verify metadata doesn't have special characters without quotes
+4. Check image URLs are valid
+
+### Still Have Issues?
+
+- Check the browser console for errors
+- Look at build logs
+- Verify file names match the URL structure
+
+---
+
+## Summary
+
+### Creating Articles ✨
+1. Create `.mdx` file in `src/app/blog/posts/`
+2. Add metadata (title, date, summary, tags)
+3. Write content in Markdown
+4. Save - it's live instantly!
+
+### Removing Articles 🗑️
+1. Go to `src/app/blog/posts/`
+2. Delete the `.mdx` file
+3. Done - article removed instantly!
+
+**That's all you need to know!** Your blog is now fully under your control. 🚀

@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:localhost)",
+      "Bash(curl -s http://localhost:3030/)",
+      "Bash(curl -s http://localhost:3030/blog/how-to-manage-blog-articles)",
+      "Bash(curl -s \"http://localhost:3030/blog/how-to-manage-blog-articles\")",
+      "Bash(cd \"d:\\\\2026 Deployements\\\\KathiravanPortfolio\\\\magic-portfolio-main\" && curl -s \"http://localhost:3030/blog/how-to-manage-blog-articles\" > /tmp/blog_page.html 2>&1 && grep -o '<[hH][0-6][^>]*>' /tmp/blog_page.html | head -20)",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"http://localhost:3030/blog/how-to-manage-blog-articles\" 2>&1 > /tmp/blog_page3.html && sed -n '/Introduction/,/Managing/p' /tmp/blog_page3.html | head -30)",
+      "Bash(grep -o '.{0,100}Introduction.{0,100}' /tmp/blog_page3.html)",
+      "Bash(curl -v \"http://localhost:3030/blog/how-to-manage-blog-articles\")",
+      "Bash(curl -I \"http://localhost:3030/blog/how-to-manage-blog-articles\")",
+      "Bash(curl -s -w \"\\\\nHTTP Status: %{http_code}\\\\n\" \"http://localhost:3030/blog/how-to-manage-blog-articles\")",
+      "Bash(curl -s -w \"\\\\nStatus: %{http_code}\\\\n\" \"http://localhost:3030/blog/how-to-manage-blog-articles\")",
+      "Bash(curl -s \"http://localhost:3030/work/advanced-ai-saas-platform/details\")",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Fix Table of Contents visibility and add heading ID support *)",
+      "Bash(npm run *)",
+      "Bash(git restore *)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-import { getPosts } from "@/utils/utils";
+import { getPosts } from "@/lib/mdx";
 import Post from "./Post";
 
 interface PostsProps {
