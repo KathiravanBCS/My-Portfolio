@@ -1,4 +1,4 @@
-import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work, Services } from "@/types";
 
 const person: Person = {
   firstName: "Kathiravan",
@@ -294,6 +294,81 @@ const work: Work = {
   description: `Full-stack and AI projects by ${person.name}`,
 };
 
+const services: Services = {
+  path: "/services",
+  label: "Services",
+  title: `Services - ${person.name} | Full-Stack Development Solutions`,
+  description: "Custom web development, AI integration, and scalable solutions for your business",
+  services: [
+    {
+      title: "Full-Stack Web Development",
+      description: "Build modern, scalable web applications from frontend to backend using React, Next.js, Node.js, and NestJS.",
+      icon: "code",
+      highlights: [
+        "React & Next.js frontend development",
+        "Node.js & NestJS backend APIs",
+        "Database design & optimization",
+        "Responsive & accessible UI/UX",
+      ],
+    },
+    {
+      title: "AI Integration & Automation",
+      description: "Integrate cutting-edge AI capabilities into your applications using Groq API and other AI services.",
+      icon: "sparkles",
+      highlights: [
+        "LLM API integration",
+        "AI-powered features",
+        "Automation workflows",
+        "Smart content generation",
+      ],
+    },
+    {
+      title: "CRM & Enterprise Solutions",
+      description: "Custom CRM systems and enterprise applications designed for complex business workflows.",
+      icon: "briefcase",
+      highlights: [
+        "CRM system development",
+        "Business process automation",
+        "Data management solutions",
+        "SharePoint integration",
+      ],
+    },
+    {
+      title: "Invoicing & Financial Systems",
+      description: "Comprehensive invoicing platforms and financial dashboards with PDF generation and payment integration.",
+      icon: "receipt",
+      highlights: [
+        "Invoicing system development",
+        "PDF generation",
+        "Payment gateway integration",
+        "Financial reporting dashboards",
+      ],
+    },
+    {
+      title: "Data Visualization & Dashboards",
+      description: "Interactive dashboards for analytics, reporting, and business intelligence with real-time data updates.",
+      icon: "chart",
+      highlights: [
+        "Interactive visualizations",
+        "Real-time data dashboards",
+        "Business analytics",
+        "Reporting solutions",
+      ],
+    },
+    {
+      title: "Cloud Deployment & DevOps",
+      description: "Deployment, scaling, and infrastructure management on AWS, Azure, and Firebase platforms.",
+      icon: "cloud",
+      highlights: [
+        "AWS cloud solutions",
+        "Azure deployment",
+        "Firebase setup",
+        "CI/CD pipelines",
+      ],
+    },
+  ],
+};
+
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
@@ -302,4 +377,4 @@ const gallery: Gallery = {
   images: [],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, services, gallery };

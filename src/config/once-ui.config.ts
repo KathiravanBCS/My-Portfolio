@@ -1,6 +1,6 @@
 import { home } from "./content";
 
-const baseURL: string = "https://kathiravan.dev";
+const baseURL: string = "https://kathiravanvittobha.com";
 
 const routes: Record<string, boolean> = {
   "/": true,
@@ -9,6 +9,7 @@ const routes: Record<string, boolean> = {
   "/experience": true,
   "/work": true,
   "/blog": true,
+  "/services": true,
   "/contact": true,
   "/gallery": false,
 };
@@ -22,11 +23,20 @@ const display = {
 const protectedRoutes: Record<string, boolean> = {};
 
 const schema = {
-  logo: "",
+  logo: `${baseURL}/images/logo.png`,
+  url: baseURL,
   type: "Person",
   name: "Kathiravan V",
   description: home.description,
+  image: `${baseURL}/images/avatar.png`,
   email: "kathiravanvittopa717@gmail.com",
+  jobTitle: "Full-Stack Developer",
+  sameAs: [
+    "https://github.com/KathiravanBCS",
+    "https://www.linkedin.com/in/kathiravan-vittobha-182569317/",
+    "https://x.com/Kathiravan27117",
+    "https://peerlist.io/kathiravan",
+  ],
 };
 
 const sameAs = {

@@ -6,6 +6,7 @@ export type {
   About,
   Blog,
   Work,
+  Services,
   Gallery,
 } from "./content.types";
 

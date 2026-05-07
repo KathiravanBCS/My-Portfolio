@@ -119,6 +119,15 @@ export interface Blog extends BasePageConfig {}
 
 export interface Work extends BasePageConfig {}
 
+export interface Services extends BasePageConfig {
+  services: Array<{
+    title: string;
+    description: string;
+    icon?: string;
+    highlights?: string[];
+  }>;
+}
+
 export interface Gallery extends BasePageConfig {
   images: Array<{
     src: string;

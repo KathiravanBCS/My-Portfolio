@@ -11,7 +11,7 @@ import {
   PiUserCircleDuotone,
   PiGridFourDuotone,
 } from "react-icons/pi";
-import { HiOutlineRocketLaunch, HiOutlineBriefcase, HiEnvelope } from "react-icons/hi2";
+import { HiOutlineRocketLaunch, HiOutlineBriefcase, HiEnvelope, HiOutlineWrench } from "react-icons/hi2";
 import { MdArticle } from "react-icons/md";
 
 const navItems = [
@@ -20,6 +20,7 @@ const navItems = [
   { path: "/skills", label: "Skills", icon: HiOutlineRocketLaunch, route: "/skills" },
   { path: "/experience", label: "Experience", icon: HiOutlineBriefcase, route: "/experience" },
   { path: "/work", label: "Work", icon: PiGridFourDuotone, route: "/work" },
+  { path: "/services", label: "Services", icon: HiOutlineWrench, route: "/services" },
   { path: "/blog", label: "Blog", icon: MdArticle, route: "/blog" },
   { path: "/contact", label: "Contact", icon: HiEnvelope, route: "/contact" },
 ];
