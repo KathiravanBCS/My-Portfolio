@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { work, person, baseURL } from "@/resources";
+import { work, person, baseURL } from "@/config";
 import { Projects } from "@/components/work/Projects";
 import { WorkHeader } from "@/components/work/WorkHeader";
 

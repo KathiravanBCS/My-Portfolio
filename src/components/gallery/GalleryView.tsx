@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { gallery } from "@/resources";
+import { gallery } from "@/config";
 import { FaStar } from "react-icons/fa6";
 
 export default function GalleryView() {

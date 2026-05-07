@@ -1,5 +1,5 @@
 import React from "react";
-import { getPosts } from "@/utils/utils";
+import { getPosts } from "@/lib/mdx";
 import { FeaturedBlogsClient } from "./FeaturedBlogsClient";
 
 export function FeaturedBlogs() {

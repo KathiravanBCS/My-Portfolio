@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { formatDate } from "@/utils/formatDate";
-import { person } from "@/resources";
+import { formatDate } from "@/lib/formatDate";
+import { person } from "@/config";
 
 interface BlogPostMetadata {
   image?: string;
@@ -64,7 +64,7 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
               {formatDate(post.metadata.publishedAt, false)}
             </span>
           </div>
-          <h3 className="font-semibold text-lg text-gray-900 dark:text-white">{post.metadata.title}</h3>
+          <h3 className="font-semibold text-lg text-gray-900 dark:text-white h-14 line-clamp-2 overflow-hidden text-ellipsis">{post.metadata.title}</h3>
           {post.metadata.tag && (
             <span className="text-sm text-pink-600 dark:text-pink-400 font-medium">{post.metadata.tag}</span>
           )}

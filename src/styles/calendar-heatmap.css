@@ -4,24 +4,24 @@
 }
 
 .react-calendar-heatmap {
-  padding: 16px;
+  padding: 8px 0;
   font-size: 12px;
+  width: 100%;
 }
 
 .react-calendar-heatmap-small-text {
-  font-size: 12px;
-  color: #a0aec0;
+  font-size: 10px;
 }
 
+/* ── Dark mode (default) ── */
 .react-calendar-heatmap text {
-  font-size: 12px;
+  font-size: 10px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  fill: #a0aec0;
+  fill: #6b7280;
 }
 
-/* Heatmap cell styling with application colors */
 .react-calendar-heatmap .color-empty {
-  fill: #1a202c;
+  fill: #1e2433;
   stroke: #2d3748;
   stroke-width: 1px;
 }
@@ -54,7 +54,52 @@
   stroke-width: 1px;
 }
 
-/* Hover effect */
+/* ── Light mode overrides ── */
+:root:not(.dark) .react-calendar-heatmap text,
+.light .react-calendar-heatmap text {
+  fill: #6b7280;
+}
+
+:root:not(.dark) .react-calendar-heatmap .color-empty,
+.light .react-calendar-heatmap .color-empty {
+  fill: #e5e7eb;
+  stroke: #d1d5db;
+  stroke-width: 1px;
+}
+
+:root:not(.dark) .react-calendar-heatmap .color-scale-1,
+.light .react-calendar-heatmap .color-scale-1 {
+  fill: #fa0f69;
+  fill-opacity: 0.2;
+  stroke: #fca5a5;
+  stroke-width: 1px;
+}
+
+:root:not(.dark) .react-calendar-heatmap .color-scale-2,
+.light .react-calendar-heatmap .color-scale-2 {
+  fill: #fa0f69;
+  fill-opacity: 0.45;
+  stroke: #fca5a5;
+  stroke-width: 1px;
+}
+
+:root:not(.dark) .react-calendar-heatmap .color-scale-3,
+.light .react-calendar-heatmap .color-scale-3 {
+  fill: #fa0f69;
+  fill-opacity: 0.7;
+  stroke: #fca5a5;
+  stroke-width: 1px;
+}
+
+:root:not(.dark) .react-calendar-heatmap .color-scale-4,
+.light .react-calendar-heatmap .color-scale-4 {
+  fill: #fa0f69;
+  fill-opacity: 1;
+  stroke: #f472b6;
+  stroke-width: 1px;
+}
+
+/* ── Hover effect ── */
 .react-calendar-heatmap .color-empty:hover,
 .react-calendar-heatmap .color-scale-1:hover,
 .react-calendar-heatmap .color-scale-2:hover,
@@ -65,15 +110,25 @@
   filter: drop-shadow(0 0 3px rgba(250, 15, 105, 0.5));
 }
 
-/* Month and day labels */
-.react-calendar-heatmap text {
-  fill: #cbd5e0;
-}
+/* ── Mobile: show only last 3 months ── */
+@media (max-width: 640px) {
+  .contribution-heatmap {
+    overflow: hidden;
+  }
 
-.react-calendar-heatmap-month {
-  font-weight: 600;
-}
+  .contribution-heatmap .react-calendar-heatmap {
+    /* shift the SVG left to show only the last ~13 weeks */
+    overflow: hidden;
+  }
 
-.react-calendar-heatmap-weekday {
-  font-weight: 500;
+  /* clip to last 13 weeks by hiding overflow on the wrapper */
+  .heatmap-mobile-clip {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .heatmap-mobile-clip .react-calendar-heatmap {
+    width: 780px;       /* full year width */
+    transform: translateX(calc(-780px + 100%));  /* slide to show only right side */
+  }
 }

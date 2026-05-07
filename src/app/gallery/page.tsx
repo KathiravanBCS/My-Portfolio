@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import GalleryView from "@/components/gallery/GalleryView";
-import { baseURL, gallery, person } from "@/resources";
+import { baseURL, gallery, person } from "@/config";
 
 export const metadata: Metadata = {
   title: gallery.title,

@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { about, person, social } from "@/resources";
-import { iconLibrary } from "@/resources/icons";
+import { about, person, social } from "@/config";
+import { iconLibrary } from "@/config/icons";
 import { FaStar } from "react-icons/fa6";
 import { HiEnvelope } from "react-icons/hi2";
 
@@ -113,26 +113,24 @@ export function AboutContent() {
             </motion.div>
           )}
           {/* Social Links */}
-          <motion.div variants={itemVariants} className="flex items-center gap-3 mt-2">
-            {social
-              .filter((item) => item.essential)
-              .map((item) => {
-                const IconComponent = iconLibrary[item.icon];
-                return IconComponent ? (
-                  <motion.a
-                    key={item.name}
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-pink-200 dark:border-pink-800/60 hover:bg-pink-50 dark:hover:bg-pink-950/30 rounded-lg font-medium transition-colors text-sm"
-                  >
-                    <IconComponent className="w-4 h-4 text-[#ff4081]" />
-                    <span>{item.name}</span>
-                  </motion.a>
-                ) : null;
-              })}
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 mt-2">
+            {social.map((item) => {
+              const IconComponent = iconLibrary[item.icon];
+              return IconComponent ? (
+                <motion.a
+                  key={item.name}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 border border-pink-200 dark:border-pink-800/60 hover:bg-pink-50 dark:hover:bg-pink-950/30 rounded-lg font-medium transition-colors text-sm"
+                >
+                  <IconComponent className="w-4 h-4 text-[#ff4081]" />
+                  <span>{item.name}</span>
+                </motion.a>
+              ) : null;
+            })}
           </motion.div>
         </div>
       </motion.div>
@@ -169,24 +167,18 @@ export function AboutContent() {
         transition={{ duration: 0.6, delay: 0.5 }}
         className="flex flex-wrap items-center justify-center gap-3"
       >
-        <a
-          href={social.find((s) => s.name === "Email")?.link ?? "#"}
+        <Link
+          href="/contact"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-pink-300 dark:border-pink-800/60 bg-white dark:bg-transparent text-gray-900 dark:text-white font-mono text-sm font-medium hover:bg-pink-50 dark:hover:bg-pink-950/30 transition-colors"
         >
           <HiEnvelope className="w-4 h-4 text-[#ff4081]" />
           Get in touch
-        </a>
+        </Link>
         <Link
           href="/work"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#ff4081] hover:bg-[#e0356e] text-white font-mono text-sm font-medium transition-colors"
         >
           View Projects
-        </Link>
-        <Link
-          href="/about"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-pink-300 dark:border-pink-800/60 bg-pink-50 dark:bg-pink-950/30 hover:bg-pink-100 dark:hover:bg-pink-900/40 text-pink-700 dark:text-pink-300 font-mono text-sm font-medium transition-colors"
-        >
-          About Me
         </Link>
       </motion.div>
     </motion.div>

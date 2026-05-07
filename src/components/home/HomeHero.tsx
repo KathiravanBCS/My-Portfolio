@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { person, social } from "@/resources";
+import { person, social } from "@/config";
 import {
   SiReact,
   SiTypescript,
@@ -79,6 +79,13 @@ export function HomeHero() {
     const skillsSection = document.getElementById("skills-section");
     if (skillsSection) {
       skillsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToGetInTouch = () => {
+    const getInTouchSection = document.getElementById("get-in-touch-section");
+    if (getInTouchSection) {
+      getInTouchSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -176,13 +183,14 @@ export function HomeHero() {
         transition={{ duration: 0.6, delay: 0.5 }}
         className="flex flex-wrap items-center justify-center gap-3"
       >
-        <a
-          href={social.find((s) => s.name === "Email")?.link ?? "#"}
+        <button
+          type="button"
+          onClick={scrollToGetInTouch}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-pink-300 dark:border-pink-800/60 bg-white dark:bg-transparent text-gray-900 dark:text-white font-mono text-sm font-medium hover:bg-pink-50 dark:hover:bg-pink-950/30 transition-colors"
         >
           <HiEnvelope className="w-4 h-4 text-[#ff4081]" />
           Get in touch
-        </a>
+        </button>
         <Link
           href="/work"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#ff4081] hover:bg-[#e0356e] text-white font-mono text-sm font-medium transition-colors"

@@ -1,4 +1,4 @@
-import type { IconName } from "@/resources/icons";
+import type { IconName } from "@/config/icons";
 
 export type Person = {
   firstName: string;

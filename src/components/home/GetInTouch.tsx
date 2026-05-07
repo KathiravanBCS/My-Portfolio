@@ -1,10 +1,7 @@
 "use client";
 
-import type React from "react";
+
 import { motion } from "framer-motion";
-import {
-  HiEnvelope,
-} from "react-icons/hi2";
 import { ContactForm as ContactPage } from "@/components";
 
 
@@ -32,9 +29,9 @@ export function GetInTouch() {
   };
 
   return (
-    <section className="w-full py-16 md:py-24 px-4 md:px-6">
+    <section  id="get-in-touch-section" className="w-full py-8 md:py-12 px-4 md:px-6">
       <motion.div
-        className="flex flex-col items-center gap-12 max-w-6xl mx-auto"
+        className="flex flex-col items-center gap-6 max-w-6xl mx-auto"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -58,41 +55,6 @@ export function GetInTouch() {
           <ContactPage />
         </motion.div>
 
-        {/* Divider */}
-        <motion.div
-          className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"
-          variants={itemVariants}
-        />
-
-        {/* Contact Info */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm"
-          variants={containerVariants}
-        >
-          <motion.div
-            className="flex items-center gap-3"
-            variants={itemVariants}
-            whileHover={{ x: 4 }}
-          >
-            <HiEnvelope className="w-5 h-5 text-[#ff4081]" />
-            <a
-              href="mailto:kathiravanvittopa717@gmail.com"
-              className="text-gray-700 dark:text-gray-400 hover:text-[#ff4081] transition-colors"
-            >
-              kathiravanvittopa717@gmail.com
-            </a>
-          </motion.div>
-
-          <div className="hidden sm:block w-px h-6 bg-gray-300 dark:bg-gray-700" />
-
-          <motion.div
-            className="flex items-center gap-3 font-mono"
-            variants={itemVariants}
-          >
-            <span className="text-gray-600 dark:text-gray-500">Response time:</span>
-            <span className="text-[#ff4081] font-semibold">24–48 hours</span>
-          </motion.div>
-        </motion.div>
       </motion.div>
     </section>
   );

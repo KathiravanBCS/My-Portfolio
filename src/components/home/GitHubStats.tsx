@@ -546,31 +546,55 @@ export function GitHubStats() {
                 </p>
               </motion.div>
 
+              {/* Desktop: full year scroll; Mobile: clipped to last 3 months */}
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="contribution-heatmap overflow-x-auto"
               >
-                <CalendarHeatmap
-                  startDate={subDays(new Date(), 365)}
-                  endDate={new Date()}
-                  values={contributions.map((day) => ({
-                    date: day.date,
-                    count: day.contributionCount,
-                  }))}
-                  classForValue={(value: unknown) => {
-                    const typedValue = value as { count: number } | null;
-                    if (!typedValue || typedValue.count === 0)
-                      return "color-empty";
-                    if (typedValue.count < 3) return "color-scale-1";
-                    if (typedValue.count < 6) return "color-scale-2";
-                    if (typedValue.count < 10) return "color-scale-3";
-                    return "color-scale-4";
-                  }}
-                  showWeekdayLabels={true}
-                />
+                {/* Desktop */}
+                <div className="contribution-heatmap hidden sm:block overflow-x-auto">
+                  <CalendarHeatmap
+                    startDate={subDays(new Date(), 365)}
+                    endDate={new Date()}
+                    values={contributions.map((day) => ({
+                      date: day.date,
+                      count: day.contributionCount,
+                    }))}
+                    classForValue={(value: unknown) => {
+                      const v = value as { count: number } | null;
+                      if (!v || v.count === 0) return "color-empty";
+                      if (v.count < 3) return "color-scale-1";
+                      if (v.count < 6) return "color-scale-2";
+                      if (v.count < 10) return "color-scale-3";
+                      return "color-scale-4";
+                    }}
+                    showWeekdayLabels={true}
+                  />
+                </div>
+                {/* Mobile: last 90 days only */}
+                <div className="contribution-heatmap block sm:hidden overflow-hidden">
+                  <CalendarHeatmap
+                    startDate={subDays(new Date(), 90)}
+                    endDate={new Date()}
+                    values={contributions
+                      .filter((d) => new Date(d.date) >= subDays(new Date(), 90))
+                      .map((day) => ({
+                        date: day.date,
+                        count: day.contributionCount,
+                      }))}
+                    classForValue={(value: unknown) => {
+                      const v = value as { count: number } | null;
+                      if (!v || v.count === 0) return "color-empty";
+                      if (v.count < 3) return "color-scale-1";
+                      if (v.count < 6) return "color-scale-2";
+                      if (v.count < 10) return "color-scale-3";
+                      return "color-scale-4";
+                    }}
+                    showWeekdayLabels={true}
+                  />
+                </div>
               </motion.div>
 
               {/* Legend */}
@@ -583,10 +607,10 @@ export function GitHubStats() {
               >
                 <span>Less</span>
                 <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 rounded-sm bg-gray-200 dark:bg-[#161b22] border border-gray-300 dark:border-[#21262d]" />
-                  <div className="w-3 h-3 rounded-sm bg-[#fa0f69]/20 dark:bg-[#fa0f69]/30" />
-                  <div className="w-3 h-3 rounded-sm bg-[#fa0f69]/40 dark:bg-[#fa0f69]/50" />
-                  <div className="w-3 h-3 rounded-sm bg-[#fa0f69]/60 dark:bg-[#fa0f69]/70" />
+                  <div className="w-3 h-3 rounded-sm bg-gray-200 dark:bg-[#1e2433] border border-gray-300 dark:border-[#2d3748]" />
+                  <div className="w-3 h-3 rounded-sm bg-[#fa0f69]/20" />
+                  <div className="w-3 h-3 rounded-sm bg-[#fa0f69]/45" />
+                  <div className="w-3 h-3 rounded-sm bg-[#fa0f69]/70" />
                   <div className="w-3 h-3 rounded-sm bg-[#fa0f69]" />
                 </div>
                 <span>More</span>
