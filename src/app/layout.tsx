@@ -57,7 +57,12 @@ export const metadata: Metadata = {
     title: home.title,
     description: home.description,
     url: baseURL,
-    images: [{ url: home.image }],
+    images: [{
+      url: `${baseURL}${home.image}`,
+      width: 1200,
+      height: 630,
+      alt: "Kathiravan V - Full-Stack Developer",
+    }],
     type: "website",
     locale: "en_IN",
     siteName: "Kathiravan V - Full-Stack Developer",
@@ -66,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: home.title,
     description: home.description,
-    images: [home.image],
+    images: [`${baseURL}${home.image}`],
     creator: "@Kathiravan27117",
   },
   robots: {
