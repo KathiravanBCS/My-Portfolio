@@ -6,6 +6,7 @@ import OnekoCat from "@/components/common/OnekoCat";
 import { CustomCursor } from "@/components/common/CustomCursor";
 import KathiravanBot from "@/components/layout/KathiravanBot";
 import BackToTop from "@/components/BackToTop";
+import { JsonLdSchema } from "@/components/JsonLdSchema";
 import { baseURL, home } from "@/config";
 
 const geistSans = Geist({
@@ -31,13 +32,53 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: home.title,
   description: home.description,
+  keywords: [
+    "full-stack developer",
+    "React developer",
+    "Next.js developer",
+    "TypeScript",
+    "Node.js",
+    "NestJS",
+    "web development",
+    "AI integration",
+    "software engineer",
+    "portfolio",
+    "Chennai",
+    "Tamil Nadu",
+  ],
+  authors: [{ name: "Kathiravan V", url: baseURL }],
+  creator: "Kathiravan V",
+  publisher: "Kathiravan V",
   metadataBase: new URL(baseURL),
+  alternates: {
+    canonical: baseURL,
+  },
   openGraph: {
     title: home.title,
     description: home.description,
     url: baseURL,
     images: [{ url: home.image }],
     type: "website",
+    locale: "en_IN",
+    siteName: "Kathiravan V - Full-Stack Developer",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: home.title,
+    description: home.description,
+    images: [home.image],
+    creator: "@Kathiravan27117",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -48,6 +89,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <JsonLdSchema />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans min-h-screen flex flex-col antialiased`}
       >

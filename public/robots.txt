@@ -1,0 +1,41 @@
+# Robots.txt for kathiravanvittobha.com
+# Allow all search engines to crawl
+
+User-Agent: *
+Allow: /
+Allow: /api/og/
+Allow: /api/rss/
+Disallow: /api/authenticate
+Disallow: /api/chat
+Disallow: /api/check-auth
+
+# Crawl delay (in seconds) - be nice to servers
+Crawl-delay: 1
+
+# Specific rules for Google
+User-Agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+# Specific rules for Bing
+User-Agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Specific rules for other bots
+User-Agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://kathiravanvittobha.com/sitemap.xml
+Sitemap: https://kathiravanvittobha.com/api/rss
+
+# Block spam/malicious bots
+User-Agent: MJ12bot
+Disallow: /
+
+User-Agent: AhrefsBot
+Disallow: /
+
+User-Agent: SemrushBot
+Disallow: /

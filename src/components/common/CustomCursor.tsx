@@ -7,7 +7,19 @@ export function CustomCursor() {
   const [isPointer, setIsPointer] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dotRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Check if mobile and hide cursor on mobile
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+    };
+    checkMobile();
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    mediaQuery.addEventListener('change', checkMobile);
+    return () => mediaQuery.removeEventListener('change', checkMobile);
+  }, []);
 
   useEffect(() => {
     const check = () =>
@@ -72,7 +84,7 @@ export function CustomCursor() {
     ? '0 0 14px rgba(255,64,129,0.95), 0 0 28px rgba(255,64,129,0.55)'
     : '0 0 8px rgba(255,64,129,0.85), 0 0 16px rgba(255,64,129,0.4)';
 
-  if (modalOpen) return null;
+  if (modalOpen || isMobile) return null;
 
   return (
     <div

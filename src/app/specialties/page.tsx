@@ -12,6 +12,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Services() {
+export default function Specialties() {
   return <ServicesContent />;
 }
