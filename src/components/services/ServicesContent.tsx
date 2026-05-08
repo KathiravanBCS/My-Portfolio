@@ -38,18 +38,18 @@ export function ServicesContent() {
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-200 dark:border-pink-800/60 bg-pink-50 dark:bg-pink-950/30 mb-6">
           <FaStar className="text-[#ff4081] h-3 w-3" />
           <span className="text-sm font-medium text-pink-700 dark:text-pink-300">
-            What I Offer
+            My Expertise
           </span>
         </div>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
-          Services & <span className="text-[#ff4081]">Solutions</span>
+          Technical <span className="text-[#ff4081]">Specialties</span>
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          Full-stack development, AI integration, and custom solutions tailored to your business needs. From concept to deployment, I help bring your ideas to life.
+          Full-stack development with expertise in React, TypeScript, NestJS, and AI integration. I specialize in building scalable, intelligent applications across the entire tech stack.
         </p>
       </motion.div>
 
-      {/* Services Grid */}
+      {/* Specialties Grid */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -57,9 +57,9 @@ export function ServicesContent() {
         viewport={{ once: true }}
         className="grid md:grid-cols-2 gap-8 mb-16"
       >
-        {services.services.map((service, index) => (
+        {services.services.map((specialty) => (
           <motion.div
-            key={index}
+            key={specialty.title}
             variants={itemVariants}
             className="group relative p-8 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950/50 hover:border-pink-300 dark:hover:border-pink-800/60 hover:shadow-lg dark:hover:shadow-pink-900/20 transition-all duration-300 backdrop-blur-sm"
           >
@@ -69,20 +69,20 @@ export function ServicesContent() {
             <div className="relative z-10">
               {/* Title */}
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                {service.title}
+                {specialty.title}
               </h3>
 
               {/* Description */}
               <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                {service.description}
+                {specialty.description}
               </p>
 
               {/* Highlights */}
-              {service.highlights && service.highlights.length > 0 && (
+              {specialty.highlights && specialty.highlights.length > 0 && (
                 <div className="space-y-2 mb-6">
-                  {service.highlights.map((highlight, idx) => (
+                  {specialty.highlights.map((highlight) => (
                     <div
-                      key={idx}
+                      key={highlight}
                       className="flex items-start gap-3 text-sm text-gray-700 dark:text-gray-300"
                     >
                       <HiCheckCircle className="w-5 h-5 text-[#ff4081] mt-0.5 flex-shrink-0" />
@@ -94,10 +94,10 @@ export function ServicesContent() {
 
               {/* Learn More Link */}
               <Link
-                href="/contact"
+                href="/work"
                 className="inline-flex items-center gap-2 text-[#ff4081] font-semibold text-sm hover:gap-3 transition-all group/link"
               >
-                Get Started
+                View Projects
                 <HiArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -105,7 +105,7 @@ export function ServicesContent() {
         ))}
       </motion.div>
 
-      {/* Why Choose Section */}
+      {/* Strengths Section */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -114,7 +114,7 @@ export function ServicesContent() {
         className="mb-16 p-10 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900/50 dark:to-gray-950/50"
       >
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-          Why Work With Me?
+          My Approach
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div>
@@ -122,10 +122,10 @@ export function ServicesContent() {
               <span className="text-2xl">⚡</span>
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
-              Fast & Reliable
+              Performance First
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Optimized code, quick turnaround, and proven delivery track record.
+              Optimized code, efficient algorithms, and lightning-fast applications with proven track record.
             </p>
           </div>
           <div>
@@ -133,10 +133,10 @@ export function ServicesContent() {
               <span className="text-2xl">🤖</span>
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
-              AI-Ready
+              AI-Integrated
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Latest AI integrations and automation to stay ahead of the curve.
+              Building intelligent features with latest AI APIs and machine learning to solve real problems.
             </p>
           </div>
           <div>
@@ -144,10 +144,10 @@ export function ServicesContent() {
               <span className="text-2xl">🔒</span>
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
-              Secure & Scalable
+              Scalable & Secure
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Enterprise-grade security and architecture that grows with you.
+              Enterprise-grade architecture that is built to grow, with security and best practices throughout.
             </p>
           </div>
         </div>
@@ -162,18 +162,27 @@ export function ServicesContent() {
         className="text-center"
       >
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          Ready to bring your project to life?
+          Interested in my work?
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-          Let's discuss your requirements and create a custom solution that fits your needs.
+          Check out my latest projects, or get in touch to discuss potential collaboration or opportunities.
         </p>
-        <Link
-          href="/contact"
-          className="inline-flex items-center gap-2 px-8 py-3 bg-[#ff4081] hover:bg-[#e0356e] text-white font-semibold rounded-lg transition-all hover:shadow-lg"
-        >
-          Start Your Project
-          <HiArrowRight className="w-5 h-5" />
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/work"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#ff4081] hover:bg-[#e0356e] text-white font-semibold rounded-lg transition-all hover:shadow-lg"
+          >
+            View My Projects
+            <HiArrowRight className="w-5 h-5" />
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-[#ff4081] text-[#ff4081] hover:bg-pink-50 dark:hover:bg-pink-950/30 font-semibold rounded-lg transition-all"
+          >
+            Get In Touch
+            <HiArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
       </motion.div>
     </motion.div>
   );

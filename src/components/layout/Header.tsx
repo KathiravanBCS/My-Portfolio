@@ -20,7 +20,7 @@ const navItems = [
   { path: "/skills", label: "Skills", icon: HiOutlineRocketLaunch, route: "/skills" },
   { path: "/experience", label: "Experience", icon: HiOutlineBriefcase, route: "/experience" },
   { path: "/work", label: "Work", icon: PiGridFourDuotone, route: "/work" },
-  { path: "/services", label: "Services", icon: HiOutlineWrench, route: "/services" },
+  { path: "/specialties", label: "Specialties", icon: HiOutlineWrench, route: "/specialties" },
   { path: "/blog", label: "Blog", icon: MdArticle, route: "/blog" },
   { path: "/contact", label: "Contact", icon: HiEnvelope, route: "/contact" },
 ];
@@ -101,29 +101,33 @@ export const Header = () => {
 
       {/* Mobile bottom nav */}
       <nav className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border border-gray-200 dark:border-gray-800 rounded-full px-2 py-2 shadow-lg">
-        {navItems.map((item) => {
-          if (!routes[item.route]) return null;
-          const isActive =
-            item.path === "/" ? pathname === "/" : pathname.startsWith(item.path);
-          const Icon = item.icon;
-          return (
-            <Link
-              key={item.path}
-              href={item.path}
-              className={`p-2.5 rounded-full transition-colors ${
-                isActive
-                  ? "bg-[#ff4081] text-white"
-                  : "text-gray-500 dark:text-gray-400 hover:text-[#ff4081]"
-              }`}
-            >
-              <Icon className="w-5 h-5" />
-            </Link>
-          );
-        })}
+        {navItems
+          .filter(
+            (item) =>
+              item.route !== "/specialties" &&
+              item.route !== "/skills"
+          )
+          .map((item) => {
+            if (!routes[item.route]) return null;
+            const isActive =
+              item.path === "/" ? pathname === "/" : pathname.startsWith(item.path);
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`p-2.5 rounded-full transition-colors ${
+                  isActive
+                    ? "bg-[#ff4081] text-white"
+                    : "text-gray-500 dark:text-gray-400 hover:text-[#ff4081]"
+                }`}
+              >
+                <Icon className="w-5 h-5" />
+              </Link>
+            );
+          })}
         {display.themeSwitcher && (
           <>
-            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-0.5" />
-            <GlobalFontSwitcher />
             <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-0.5" />
             <ThemeToggle />
           </>

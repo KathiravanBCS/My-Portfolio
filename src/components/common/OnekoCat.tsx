@@ -49,6 +49,7 @@ export default function OnekoCat() {
   const [spriteType, setSpriteType] = useState<SpriteType>('cat');
   const [showSwitcher, setShowSwitcher] = useState(false);
   const [hasMouseMoved, setHasMouseMoved] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const hasMouseMovedRef = useRef(false);
 
   const mousePosRef = useRef<Position>({ x: 0, y: 0 });
@@ -71,6 +72,17 @@ export default function OnekoCat() {
   useEffect(() => {
     isDisabledRef.current = isDisabled;
   }, [isDisabled]);
+
+  useEffect(() => {
+    // Check if mobile and hide neko on mobile
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+    };
+    checkMobile();
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    mediaQuery.addEventListener('change', checkMobile);
+    return () => mediaQuery.removeEventListener('change', checkMobile);
+  }, []);
 
   const setSprite = useCallback((name: string, frame: number) => {
     if (!nekoRef.current) return;
@@ -275,7 +287,7 @@ export default function OnekoCat() {
     setShowSwitcher(false);
   }, []);
 
-  const handleClick = useCallback((e: React.MouseEvent) => {
+  const handleClick = useCallback((e: React.MouseEvent | React.KeyboardEvent) => {
     e.stopPropagation();
     if (isDisabledRef.current) return;
     if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
@@ -288,7 +300,7 @@ export default function OnekoCat() {
     }, 250);
   }, []);
 
-  const handleDoubleClick = useCallback((e: React.MouseEvent) => {
+  const handleDoubleClick = useCallback((e: React.MouseEvent | React.KeyboardEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (clickTimerRef.current) {
@@ -361,7 +373,7 @@ export default function OnekoCat() {
   };
 
   const isBlogPage = pathname?.startsWith('/blog');
-  if (!isVisible || isBlogPage || !hasMouseMoved) return null;
+  if (!isVisible || isBlogPage || !hasMouseMoved || isMobile) return null;
 
   const spriteImage = spriteType === 'cat' ? '/oneko.gif' : '/oneko-dog.gif';
 
@@ -375,6 +387,7 @@ export default function OnekoCat() {
         onDoubleClick={handleDoubleClick}
         onContextMenu={handleContextMenu}
         onMouseDown={handleMouseDown}
+        onKeyDown={(e) => { if (e.key === 'Enter') handleClick(e); else if (e.key === ' ') handleDoubleClick(e); }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -452,6 +465,7 @@ export default function OnekoCat() {
             <button
               type="button"
               onClick={() => handleSpriteChange('cat')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleSpriteChange('cat'); }}
               style={{
                 width: '100%',
                 padding: '8px 12px',
@@ -475,6 +489,7 @@ export default function OnekoCat() {
             <button
               type="button"
               onClick={() => handleSpriteChange('dog')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleSpriteChange('dog'); }}
               style={{
                 width: '100%',
                 padding: '8px 12px',
@@ -499,6 +514,7 @@ export default function OnekoCat() {
             <button
               type="button"
               onClick={toggleDisabledState}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggleDisabledState(); }}
               style={{
                 width: '100%',
                 padding: '8px 12px',

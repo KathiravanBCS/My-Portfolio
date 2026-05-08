@@ -9,7 +9,7 @@ const routes: Record<string, boolean> = {
   "/experience": true,
   "/work": true,
   "/blog": true,
-  "/services": true,
+  "/specialties": true,
   "/contact": true,
   "/gallery": false,
 };
