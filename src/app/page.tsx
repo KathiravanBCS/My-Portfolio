@@ -13,7 +13,12 @@ export const metadata: Metadata = {
     title: home.title,
     description: home.description,
     url: `${baseURL}${home.path}`,
-    images: [{ url: home.image }],
+    images: [{
+      url: `${baseURL}${home.image}`,
+      width: 1200,
+      height: 630,
+      alt: "Kathiravan V - Full-Stack Developer",
+    }],
   },
 };
 
